@@ -2,40 +2,24 @@ require 'spec_helper'
 
 describe "StaticPages" do
 
-	describe "Home Page " do
-		it "should have the h1 'CKTLS'" do
-			visit '/static_pages/home'
-			page.should have_selector('h1', :text => 'CKTLS')
-		end
+	subject { page }
 
-		it "should have the title 'Home'" do
-			visit '/static_pages/home'
-			page.should have_selector('title', :text => 'CKTLS | Home')
-		end
+	describe "Home Page " do
+		before { visit root_path }
+		it { should have_selector('h1', :text => 'CKTLS') }
+		it { should have_selector('title', :text => 'CKTLS | Home') }
 	end
 
 	describe "About Page " do
-		it "should have the h1 'About'" do
-			visit '/static_pages/about'
-			page.should have_selector('h1', :text => 'About')
-		end
-
-		it "should have the title 'About'" do
-			visit '/static_pages/about'
-			page.should have_selector('title', :text => 'CKTLS | About')
-		end
+		before { visit about_path }
+		it { should have_selector('h1', :text => 'About') }
+		it { should have_selector('title', :text => 'CKTLS | About') }
 	end
 
 	describe "Contact Page " do
-		it "should have the h1 'Contact'" do
-			visit '/static_pages/contact'
-			page.should have_selector('h1', :text => 'Contact')
-		end
-
-		it "should have the title 'Contact'" do
-			visit '/static_pages/contact'
-			page.should have_selector('title', :text => 'CKTLS | Contact')
-		end
+		before { visit contact_path }
+		it { should have_selector('h1', :text => 'Contact') }
+		it { should have_selector('title', :text => 'CKTLS | Contact') }
 	end
 
 end
