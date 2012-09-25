@@ -1,7 +1,13 @@
 <header class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container">
-			<%= link_to "CKTLS", root_path, id: "logo" %>
+			<ul class="nav pull-left">
+				<%= link_to "CKTLS", root_path, id: "logo" %>
+				<% if signed_in? %>
+					<li class='divider'></li>
+					<li><%= link_to current_user.name, current_user %></li>
+				<% end %>
+			</ul>
 			<nav>
 				<ul class="nav pull-right">
 					<li><%= link_to "Home", root_path %></li>
