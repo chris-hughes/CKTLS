@@ -9,4 +9,13 @@ FactoryGirl.define do
 	    	admin true
 	    end
 	end
+
+	factory :cocktail do
+		sequence(:name) { |n| "Cocktail #{n}" }
+		family "Fruity"
+		makes 2
+		glass "Long"
+		chilled "FALSE"
+	end
+
 end

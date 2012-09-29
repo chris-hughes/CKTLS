@@ -10,12 +10,6 @@ describe "StaticPages" do
 		it { should have_selector('title', :text => 'CKTLS | Home') }
 	end
 
-	describe "Cocktails Page" do
-		before { visit cocktails_path }
-		it { should have_selector('h1', text: 'Cocktails') }
-		it { should have_selector('title', text: 'CKTLS | Cocktails') }
-	end
-
 	describe "About Page " do
 		before { visit about_path }
 		it { should have_selector('h1', :text => 'About') }
@@ -30,8 +24,6 @@ describe "StaticPages" do
 
 	it "should have the right links on the layout" do
 	    visit root_path
-	    click_link "Cocktails"
-	    page.should have_selector 'title', text: 'CKTLS | Cocktails'
 	    click_link "About"
 	    page.should have_selector 'title', text: 'CKTLS | About'
 	    click_link "Contact"
