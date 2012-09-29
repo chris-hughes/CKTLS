@@ -15,7 +15,7 @@ class CocktailsController < ApplicationController
 		@cocktail = Cocktail.new(params[:cocktail])
 		if @cocktail.save
 			flash[:success] = @cocktail.name.titleize+" added to CKTLS!"
-			redirect_to cocktails_path
+			redirect_to @cocktail
 		else
 			render 'new'
 		end

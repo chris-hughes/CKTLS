@@ -41,6 +41,12 @@ describe "UserPages" do
 			it 'should create a cocktail' do
 				expect { click_button submit }.to change(Cocktail, :count).by(1)
 			end
+
+			describe "after saving the user" do
+				before { click_button submit }
+				
+				it { should have_selector('h1', text: "Example Cocktail") }
+			end
 		end
 	end
 
