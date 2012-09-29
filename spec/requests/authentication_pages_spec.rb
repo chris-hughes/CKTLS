@@ -49,6 +49,7 @@ describe "Authentication" do
 
   		describe "for non-signed in users" do
   			let(:user) { FactoryGirl.create(:user) }
+        let(:cocktail) { FactoryGirl.create(:user) }
 
   			describe "in the Users controller" do
 

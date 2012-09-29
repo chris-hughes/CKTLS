@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "UserPages" do
+describe "CocktailPages" do
 
 	subject { page }
 
@@ -45,15 +45,18 @@ describe "UserPages" do
 			describe "after saving the cocktail" do
 				before { click_button submit }
 				
-				# this works correctly but the test does not pass!?
-				# it { should have_selector('h1',    text: cocktail.name.titleize) }
+				it { should have_selector('h1',    text: "Example Cocktail") }
 			end
 		end
 	end
 
 	describe "edit cocktail" do
 	    let(:cocktail) { FactoryGirl.create(:cocktail) }
-	    before { visit edit_cocktail_path(cocktail) }
+	    let(:user) { FactoryGirl.create(:user) }
+		before do
+			sign_in user
+	    	visit edit_cocktail_path(cocktail)
+	    end	    
 
 	    describe "page" do
 	    	it { should have_selector('h1',    text: "Update cocktail") }
