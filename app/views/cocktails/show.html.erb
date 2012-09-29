@@ -1,9 +1,9 @@
-<% provide(:title, @cocktail.name) %>
+<% provide(:title, @cocktail.name.titleize) %>
 <div class="row">
 	<aside class="span4">
 		<section>
 			<h1>
-				<%= @cocktail.name %>
+				<%= @cocktail.name.titleize %>
 			</h1>
 		</section>
 	</aside>
