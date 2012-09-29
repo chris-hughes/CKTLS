@@ -5,10 +5,7 @@
 
 <ul class="users">
 	<% @users.each do |user| %>
-    	<li>
-    		<!-- this will loop through all the users and render the _user partial -->
-    		<%= render @users %>
-    	</li>
+    	<%= render @users %>
   	<% end %>
 </ul>
 
