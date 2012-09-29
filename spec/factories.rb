@@ -14,8 +14,8 @@ FactoryGirl.define do
 		sequence(:name) { |n| "Cocktail #{n}" }
 		family "Fruity"
 		makes 2
-		glass "Long"
-		chilled "FALSE"
+		glass "Martini glass"
+		chilled "No"
 	end
 
 end

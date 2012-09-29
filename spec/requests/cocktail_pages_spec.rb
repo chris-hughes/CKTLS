@@ -12,14 +12,69 @@ describe "CocktailPages" do
 		it { should have_selector('title', text: cocktail.name.titleize) }
 	end
 
+	describe "index" do
+	    before do
+		    FactoryGirl.create(:cocktail)
+		    FactoryGirl.create(:cocktail, name: "Bob")
+		    FactoryGirl.create(:cocktail, name: "Ben")
+		    visit cocktails_path
+	    end
+
+	    it { should have_selector('title', text: 'Cocktails') }
+	    it { should have_selector('h1',    text: 'Cocktails') }
+
+		describe "pagination" do
+
+			before(:all) { 30.times { FactoryGirl.create(:cocktail) } }
+			after(:all) { Cocktail.delete_all }
+
+			it { should have_selector('div.pagination') }
+
+			it "should list each cocktail" do
+				Cocktail.paginate(page: 1).each do |cocktail|
+					page.should have_selector('li', text:cocktail.name)
+				end
+			end
+		end
+
+		describe "delete links" do
+
+			it { should_not have_link('delete') }
+
+			describe "as an admin user" do
+				let(:admin) { FactoryGirl.create(:admin) }
+				before do
+					sign_in admin
+					visit cocktails_path
+				end
+
+				it { should have_link('delete', href: cocktail_path(Cocktail.first)) }
+				it "should be able to delete a cocktail" do
+					expect { click_link('delete') }.to change(Cocktail, :count).by(-1)
+				end
+
+			end
+		end
+
+    end
+
 	describe "New cocktail Page" do
-		before { visit new_cocktail_path }
+		let(:user) { FactoryGirl.create(:user) }
+		before do
+			sign_in user
+			visit new_cocktail_path
+		end
+
 		it { should have_selector('h1', text:'Create Your Cocktail') }
 		it { should have_selector('title', text: 'CKTLS | Create') }
 	end
 
 	describe "Create new cocktail" do
-		before { visit new_cocktail_path }
+		let(:user) { FactoryGirl.create(:user) }
+		before do
+			sign_in user
+			visit new_cocktail_path
+		end
 
 		let(:submit) { "Create my cocktail" }
 

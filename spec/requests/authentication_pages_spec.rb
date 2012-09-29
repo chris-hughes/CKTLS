@@ -68,7 +68,7 @@ describe "Authentication" do
   				describe "visiting the user index" do
           			before { visit users_path }
           			it { should have_selector('title', text: 'Sign in') }
-		        end
+		      end
 
   			end
 
@@ -82,6 +82,18 @@ describe "Authentication" do
 
           describe "submitting to the update action" do
             before { put cocktail_path(cocktail) }
+
+            specify { response.should redirect_to(signin_path) }
+          end
+
+          describe  "visiting the new page" do
+            before { visit new_cocktail_path }
+
+            it { should have_selector('title', text: "Sign in") }
+          end
+
+          describe "submitting to the create action" do
+            before { post cocktails_path }
 
             specify { response.should redirect_to(signin_path) }
           end
@@ -125,11 +137,17 @@ describe "Authentication" do
       describe "as non-admin user" do
         let(:user) { FactoryGirl.create(:user) }
         let(:non_admin) { FactoryGirl.create(:user) }
+        let(:cocktail) { FactoryGirl.create(:cocktail) }
 
         before { sign_in non_admin }
 
         describe "submitting a DELETE request to the Users#destroy action" do
           before { delete user_path(user) }
+          specify { response.should redirect_to(root_path) }        
+        end
+
+        describe "submitting a DELETE request to the Cocktails#destroy action" do
+          before { delete cocktail_path(cocktail) }
           specify { response.should redirect_to(root_path) }        
         end
       end

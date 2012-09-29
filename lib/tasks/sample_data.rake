@@ -16,5 +16,18 @@ namespace :db do
                    password: password,
                    password_confirmation: password)
     	end
+
+      99.times do |n|
+          name = Faker::Name.name
+          family = "Fruity",
+          makes = 2
+          glass = "Martini glass",
+          chilled ="No"
+          Cocktail.create!(name: name,
+                           family: family,
+                           makes: makes,
+                           glass: glass,
+                           chilled: chilled)
+      end
   	end
 end
