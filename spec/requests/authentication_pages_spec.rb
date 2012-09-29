@@ -28,7 +28,7 @@ describe "Authentication" do
 
     	describe "with valid information" do
       		let(:user) { FactoryGirl.create(:user) }
-      		before { sign_in user } # sign_in is a user defined function in utilities
+      		before { sign_in user } # sign_in is a user defined helper function in utilities
 
 		    it { should have_selector('title', text: user.name) }
 		    it { should have_link('Users',    href: users_path) }
