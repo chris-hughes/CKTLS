@@ -71,6 +71,22 @@ describe "Authentication" do
 
   			end
 
+        describe "in the Cocktails controller" do
+
+          describe "visiting the edit page" do
+            before { visit edit_cocktail_path(cocktail) }
+
+            it { should have_selector('title', text: "Sign in") }
+          end
+
+          describe "submitting to the update action" do
+            before { put cocktail_path(cocktail) }
+
+            specify { response.should redirect_to(signin_path) }
+          end
+
+        end
+
   			describe "when attempting to visit a protected page" do
         		before do
           			visit edit_user_path(user)

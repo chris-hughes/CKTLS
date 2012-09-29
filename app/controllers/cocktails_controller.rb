@@ -1,4 +1,5 @@
 class CocktailsController < ApplicationController
+	before_filter :signed_in_user, only: [:edit, :update, :destroy]
 
 	def show
 		@cocktail = Cocktail.find(params[:id])
@@ -34,5 +35,11 @@ class CocktailsController < ApplicationController
 			render 'edit'
 		end
 	end
+
+	private
+
+		def signed_in_user
+      		redirect_to signin_url, notice: "Please sign in." unless signed_in?
+    	end
 
 end
