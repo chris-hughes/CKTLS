@@ -47,15 +47,4 @@ class CocktailsController < ApplicationController
 	    redirect_to cocktails_url
     end
 
-	private
-
-		def signed_in_user
-			store_location
-      		redirect_to signin_url, notice: "Please sign in." unless signed_in?
-    	end
-
-  		def admin_user
-  			redirect_to(root_path) unless current_user.admin?
-  		end
-
 end

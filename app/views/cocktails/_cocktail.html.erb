@@ -1,0 +1,6 @@
+<li><%= link_to cocktail.name, cocktail %></li>
+<% if signed_in? %>
+	<% if current_user.admin? %>
+		| <%= link_to "delete", cocktail, method: :delete, data: { confirm: "You sure?" } %>
+	<% end %>
+<% end %>
