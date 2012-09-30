@@ -9,18 +9,7 @@
 				<%= @cocktail.name.titleize %>
 			</h1>
 			<%= render 'cocktails/tools' %>
-			<p>
-				<ul>
-					<% @cocktail.ingredients.each do |ingredient| %>
-		    			<li>
-							<%= ingredient.measure %> <%= ingredient.unit %> <%= ingredient.ingredient %>
-							<% if ingredient.decoration? %>
-								,decoration
-							<% end %>
-						</li>
-		  			<% end %>
-		  		</ul>
-		  	</p>
+			<%= render 'cocktails/ingredients' %>
 		</section>
 	</aside>
 </div>
