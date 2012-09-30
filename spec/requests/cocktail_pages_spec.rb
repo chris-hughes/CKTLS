@@ -20,12 +20,10 @@ describe "CocktailPages" do
 	    it { should have_content(cocktail.makes) }
 	    it { should have_content(cocktail.glass) }
 
-	    # this needs to be fixed
-	    
+	    # this should be fixed
+
 	    # describe "glass chilled" do
-	    # 	before do 
-	    # 		cocktail.toggle(:chilled)
-	    # 	end
+	    # 	before { cocktail.toggle(:chilled) }
 	    # 	it { should have_content("chilled") }
 	    # end
 

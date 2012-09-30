@@ -1,0 +1,24 @@
+<p>
+	<ul>
+		<li>
+			Makes <b><%= @cocktail.makes %></b>
+		</li>
+		<li>
+			Glasses 
+			<b>
+				<%= @cocktail.makes %> <%= @cocktail.glass %>
+				<% if @cocktail.chilled? %>
+					,chilled
+				<% end %>
+			</b>
+		</li>
+		<li>
+			<% if @cocktail.tools.any? %>
+				Equipment
+				<% @cocktail.tools.each do |tool| %>
+					<b><%= tool.tool %>,</b>
+				<% end %>
+			<% end %>
+		</li>
+	</ul>
+</p>
