@@ -23,4 +23,12 @@ FactoryGirl.define do
 		cocktail
 	end
 
+	factory :ingredient do
+		ingredient "Vodka"
+		measure 2
+		unit "Shots"
+		decoration false
+		cocktail
+	end
+
 end

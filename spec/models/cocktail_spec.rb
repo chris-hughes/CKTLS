@@ -26,6 +26,7 @@ describe Cocktail do
 	it { should respond_to(:glass) }
 	it { should respond_to(:chilled) }
 	it { should respond_to(:tools) }
+	it { should respond_to(:ingredients) }
 
 	it { should be_valid }
 
@@ -59,7 +60,7 @@ describe Cocktail do
 		it { should_not be_valid }
 	end
 
-	describe "micropost associations" do
+	describe "tools associations" do
 
 	    before { @cocktail.save }
 	    let!(:first_tool) { FactoryGirl.create(:tool, cocktail: @cocktail) }
@@ -76,6 +77,25 @@ describe Cocktail do
 	        	Tool.find_by_id(tool.id).should be_nil
 	    	end
 	    end
-    end    
+    end
+
+	describe "ingredients associations" do
+
+	    before { @cocktail.save }
+	    let!(:first_ingredient) { FactoryGirl.create(:ingredient, cocktail: @cocktail) }
+	    let!(:second_ingredient) { FactoryGirl.create(:ingredient, cocktail: @cocktail) }
+
+	    it "should have the right ingredients" do
+	      @cocktail.ingredients.should == [first_ingredient, second_ingredient]
+	    end
+
+	    it "should destroy associated ingredients" do
+	    	ingredients = @cocktail.ingredients
+	      	@cocktail.destroy
+	      	ingredients.each do |ingredient|
+	        	ingredient.find_by_id(ingredient.id).should be_nil
+	    	end
+	    end
+    end 
   
 end
