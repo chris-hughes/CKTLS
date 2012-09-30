@@ -36,6 +36,17 @@ namespace :db do
         cocktails.each { |cocktail| cocktail.tools.create!(tool: tool) }
       end
 
+      cocktails = Cocktail.all
+      2.times do
+        ingredient = "Vodka"
+        measure = 2
+        unit = "Shots"
+        decoration = false
+        cocktails.each { |cocktail| cocktail.ingredients.create!(ingredient: ingredient,
+                                                                 measure: measure,
+                                                                 unit: unit,
+                                                                 decoration: decoration) }
+      end
 
   	end
 end

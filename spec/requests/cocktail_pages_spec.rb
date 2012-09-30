@@ -10,6 +10,10 @@ describe "CocktailPages" do
 		before do
 			@first_tool = cocktail.tools.create(tool: "straws")
 			@second_tool = cocktail.tools.create(tool: "muddler")
+			@first_ingredient = cocktail.ingredients.create(ingredient: "vodka", measure: 2, unit: "shots",
+															decoration: "false" )
+			@second_ingredient = cocktail.ingredients.create(ingredient: "juice", measure: 2, unit: "shots",
+															decoration: "false" )
 		end
 
 	    before { visit cocktail_path(cocktail) }
@@ -35,6 +39,18 @@ describe "CocktailPages" do
 	    describe "tools" do
 	    	it { should have_content(cocktail.tools.first.tool) }
 	    	it { should have_content(cocktail.tools.second.tool) }
+	    end
+
+	    describe "ingredients" do
+	    	it { should have_content(cocktail.ingredients.first.ingredient) }
+	    	it { should have_content(cocktail.ingredients.second.ingredient) }
+
+	    	# this should be fixed
+
+	    	# describe "decoration" do
+	    	# 	before { cocktail.ingredients.first.toggle(:decoration) }
+	    	# 	it { should have_content("decorate") }
+	    	# end
 	    end
 
 	end	
