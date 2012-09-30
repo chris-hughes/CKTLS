@@ -19,9 +19,9 @@ namespace :db do
 
       99.times do |n|
           name = Faker::Name.name
-          family = "Fruity",
+          family = "Fruity"
           makes = 2
-          glass = "Martini glass",
+          glass = "Martini glass"
           chilled ="No"
           Cocktail.create!(name: name,
                            family: family,
@@ -29,5 +29,13 @@ namespace :db do
                            glass: glass,
                            chilled: chilled)
       end
+
+      cocktails = Cocktail.all
+      2.times do
+        tool = "Cocktail shaker"
+        cocktails.each { |cocktail| cocktail.tools.create!(tool: tool) }
+      end
+
+
   	end
 end

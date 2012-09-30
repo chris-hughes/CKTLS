@@ -14,6 +14,7 @@
 
 class Cocktail < ActiveRecord::Base
 	attr_accessible :name, :family, :makes, :glass, :chilled
+	has_many :tools, dependent: :destroy
 
 	validates :name, presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
 	validates :family, presence: true, length: { maximum: 50 }

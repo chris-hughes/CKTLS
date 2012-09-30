@@ -5,6 +5,33 @@
 			<h1>
 				<%= @cocktail.name.titleize %>
 			</h1>
+			<h2>
+				<%= @cocktail.family.titleize %>
+			</h2>
+			<p>
+				<ul>
+					<li>
+						Makes <b><%= @cocktail.makes %></b>
+					</li>
+					<li>
+						Glasses 
+						<b>
+							<%= @cocktail.makes %> <%= @cocktail.glass %>
+							<% if @cocktail.chilled? %>
+								,chilled
+							<% end %>
+						</b>
+					</li>
+					<% if @cocktail.tools.any? %>
+						<li>
+							Equipment
+							<% @cocktail.tools.each do |tool| %>
+								<b><%= tool.tool %>,</b>
+							<% end %>
+						</li>
+					<% end %>
+				</ul>
+			</p>
 		</section>
 	</aside>
 </div>

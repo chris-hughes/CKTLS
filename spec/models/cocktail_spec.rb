@@ -25,6 +25,7 @@ describe Cocktail do
 	it { should respond_to(:makes) }
 	it { should respond_to(:glass) }
 	it { should respond_to(:chilled) }
+	it { should respond_to(:tools) }
 
 	it { should be_valid }
 
@@ -57,5 +58,24 @@ describe Cocktail do
 
 		it { should_not be_valid }
 	end
+
+	describe "micropost associations" do
+
+	    before { @cocktail.save }
+	    let!(:first_tool) { FactoryGirl.create(:tool, cocktail: @cocktail) }
+	    let!(:second_tool) { FactoryGirl.create(:tool, cocktail: @cocktail) }
+
+	    it "should have the right tools" do
+	      @cocktail.tools.should == [first_tool, second_tool]
+	    end
+
+	    it "should destroy associated tools" do
+	    	tools = @cocktail.tools
+	      	@cocktail.destroy
+	      	tools.each do |tool|
+	        	Tool.find_by_id(tool.id).should be_nil
+	    	end
+	    end
+    end    
   
 end

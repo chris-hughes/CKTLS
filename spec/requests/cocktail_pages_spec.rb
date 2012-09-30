@@ -4,13 +4,46 @@ describe "CocktailPages" do
 
 	subject { page }
 
-	describe "cocktail show page" do
-		let(:cocktail) { FactoryGirl.create(:cocktail) }
-		before { visit cocktail_path(cocktail) }
+	# describe "cocktail show page" do
+	# 	let(:cocktail) { FactoryGirl.create(:cocktail) }
+	# 	before { visit cocktail_path(cocktail) }
 
-		it { should have_selector('h1',    text: cocktail.name.titleize) }
-		it { should have_selector('title', text: cocktail.name.titleize) }
-	end
+	# 	it { should have_selector('h1',    text: cocktail.name.titleize) }
+	# 	it { should have_selector('title', text: cocktail.name.titleize) }
+	# end
+
+	describe "cocktail show page" do
+
+		let(:cocktail) { FactoryGirl.create(:cocktail) }
+		before do
+			@first_tool = cocktail.tools.build(tool: "straws")
+			@second_tool = cocktail.tools.build(tool: "muddler")
+		end
+
+	    before { visit cocktail_path(cocktail) }
+
+	    it { should have_selector('h1', text: cocktail.name.titleize) }
+	    it { should have_selector('title', text: cocktail.name.titleize) }
+	    it { should have_content(cocktail.family.titleize) }
+	    it { should have_content(cocktail.makes) }
+	    it { should have_content(cocktail.glass) }
+
+	    describe "glass chilled" do
+	    	before { cocktail.toggle(:chilled) }
+	    	it { should have_content("chilled") }
+	    end
+
+		describe "glass not chilled" do
+	    	before { cocktail.chilled = FALSE }
+	    	it { should_not have_content("chilled") }
+	    end
+
+	    describe "tools" do
+	    	it { should have_content(cocktail.tools.first.tool) }
+	    	it { should have_content(cocktail.tools.second.tool) }
+	    end
+
+	end	
 
 	describe "index" do
 	    before do

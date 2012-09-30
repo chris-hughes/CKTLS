@@ -18,4 +18,9 @@ FactoryGirl.define do
 		chilled "No"
 	end
 
+	factory :tool do
+		tool "Cocktail shaker"
+		cocktail
+	end
+
 end
