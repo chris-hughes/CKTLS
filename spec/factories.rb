@@ -15,7 +15,7 @@ FactoryGirl.define do
 		family "Fruity"
 		makes 2
 		glass "Martini glass"
-		chilled "No"
+		chilled false
 	end
 
 	factory :tool do
