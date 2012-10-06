@@ -20,8 +20,31 @@
 	<%= f.fields_for :tools do |builder| %>
 		<%= builder.label :tool %>
 		<%= builder.text_field :tool %>
+
 		<%= builder.check_box :_destroy %>
 		<%= builder.label :_destroy, "Remove tool" %>
+	<% end %>
+
+	<%= f.fields_for :ingredients do |builder| %>
+		<%= builder.label :ingredient %>
+		<%= builder.text_field :ingredient %>
+
+		<%= builder.label :measure %>
+		<%= builder.number_field :measure, min: 0 %>
+
+		<%= builder.label :decoration %>
+		<%= builder.check_box :decoration %><br/>
+
+		<%= builder.check_box :_destroy %>
+		<%= builder.label :_destroy, "Remove ingredient" %>
+	<% end %>
+
+	<%= f.fields_for :directions do |builder| %>
+		<%= builder.label :direction %>
+		<%= builder.text_area :direction, rows: 3 %>
+
+		<%= builder.check_box :_destroy %>
+		<%= builder.label :_destroy, "Remove direction" %>
 	<% end %>
 
     <%= f.submit "Create my cocktail", class: "btn btn-large btn-primary" %>
