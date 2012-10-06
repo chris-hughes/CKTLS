@@ -1,6 +1,11 @@
 <% provide(:title, 'Home') %>
 <div class="center hero-unit">
 	<h1>CKTLS</h1>
-	<p>Boring party? Friends coming over? Let <em>CKTLS</em> find the right cocktail for any occasion</p>
-	<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+	<% if !signed_in? %>
+		<p>Boring party? Friends coming over? Let <em>CKTLS</em> find the right cocktail for any occasion</p>
+		<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+	<% else %>
+		<p>Start enjoying cocktail now!</p>
+		<%= link_to "List of cocktails!", cocktails_path, class: "btn btn-large btn-primary" %>
+	<% end %>
 </div>
