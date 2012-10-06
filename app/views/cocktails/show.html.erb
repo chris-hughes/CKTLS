@@ -8,7 +8,23 @@
 			<h1>
 				<%= @cocktail.name.titleize %>
 			</h1>
-			<%= render 'cocktails/tools' %>
+			<p>
+				<ul>
+					<li>
+						Makes <b><%= @cocktail.makes %></b>
+					</li>
+					<li>
+						Glasses 
+						<b>
+							<%= @cocktail.makes %> <%= @cocktail.glass %>
+							<% if @cocktail.chilled? %>
+								,chilled
+							<% end %>
+						</b>
+					</li>
+					<%= render 'cocktails/tools' %>
+				</ul>
+			</p>
 			<%= render 'cocktails/ingredients' %>
 			<%= render 'cocktails/directions' %>
 		</section>

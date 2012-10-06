@@ -2,7 +2,7 @@
 	<ul>
 		<% @cocktail.ingredients.each do |ingredient| %>
 			<li>
-				<%= ingredient.measure %> <%= ingredient.unit %> <%= ingredient.ingredient %>
+				<%= ingredient.measure %> <%= ingredient.unit %> <b><%= ingredient.ingredient %></b>
 				<% if ingredient.decoration? %>
 					,decoration
 				<% end %>
