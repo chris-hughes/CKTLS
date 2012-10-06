@@ -1,0 +1,10 @@
+<p>
+	<ul>
+		<% @cocktail.directions.each do |direction| %>
+			<% test = direction.direction.split %>
+			<li>
+				<b><%= test.shift %></b> <%=test.join(' ') %>
+			</li>
+		<% end %>
+	</ul>
+</p>
