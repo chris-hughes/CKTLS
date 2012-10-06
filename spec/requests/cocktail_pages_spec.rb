@@ -172,7 +172,7 @@ describe "CocktailPages" do
 	    	before do
 	    		fill_in "Name",			with: " "
 
-	    		click_button "Save changes"
+	    		click_button "Create my cocktail"
 	    	end
 
 	    	it { should have_content('error') }
@@ -187,7 +187,7 @@ describe "CocktailPages" do
 				select "Martini glass", from: "Glass"
 				select "No",			from: "Chilled"
 		        
-		        click_button "Save changes"
+		        click_button "Create my cocktail"
       		end
 
 		    it { should have_selector('title', text: new_name) }

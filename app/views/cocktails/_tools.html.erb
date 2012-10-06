@@ -1,8 +1,8 @@
-<li>
-	<% if @cocktail.tools.any? %>
+<% if @cocktail.tools.any? %>
+	<li>
 		Equipment
 		<% @cocktail.tools.each do |tool| %>
 			<b><%= tool.tool %>,</b>
 		<% end %>
-	<% end %>
-</li>
+	</li>
+<% end %>

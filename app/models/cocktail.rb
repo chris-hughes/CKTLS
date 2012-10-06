@@ -13,10 +13,12 @@
 #
 
 class Cocktail < ActiveRecord::Base
-	attr_accessible :name, :family, :makes, :glass, :chilled
-	has_many :tools, dependent: :destroy
+	attr_accessible :name, :family, :makes, :glass, :chilled, :tools_attributes
+	has_many :tools, :inverse_of => :cocktail, dependent: :destroy
 	has_many :ingredients, dependent: :destroy
 	has_many :directions, dependent: :destroy
+
+	accepts_nested_attributes_for :tools, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
 
 	validates :name, presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
 	validates :family, presence: true, length: { maximum: 50 }

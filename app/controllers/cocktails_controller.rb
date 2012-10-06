@@ -18,6 +18,7 @@ class CocktailsController < ApplicationController
 
 	def new
 		@cocktail = Cocktail.new
+		@cocktail.tools.build
 	end
 
 	def create

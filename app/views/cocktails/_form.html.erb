@@ -1,0 +1,29 @@
+<%= form_for(@cocktail) do |f| %>
+	 
+	<%= render 'shared/cocktail_error_messages' %>
+
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+
+	<%= f.label :family %>
+	<%= f.select(:family, [["Fruity"],["Refreshing"]]) %>
+
+	<%= f.label :makes %>
+	<%= f.number_field :makes, min: 1 %>
+
+	<%= f.label :glass %>
+	<%= f.select :glass, [["Wine glass"],["Martini glass"]] %>
+
+	<%= f.label :chilled %>
+	<%= f.select :chilled, [["No","FALSE"],["Yes","TRUE"]] %>
+
+	<%= f.fields_for :tools do |builder| %>
+		<%= builder.label :tool %>
+		<%= builder.text_field :tool %>
+		<%= builder.check_box :_destroy %>
+		<%= builder.label :_destroy, "Remove tool" %>
+	<% end %>
+
+    <%= f.submit "Create my cocktail", class: "btn btn-large btn-primary" %>
+
+<% end %>
