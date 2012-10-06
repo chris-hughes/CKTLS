@@ -31,4 +31,9 @@ FactoryGirl.define do
 		cocktail
 	end
 
+	factory :direction do
+		direction "Muddle everything"
+		cocktail
+	end
+
 end

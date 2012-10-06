@@ -27,6 +27,7 @@ describe Cocktail do
 	it { should respond_to(:chilled) }
 	it { should respond_to(:tools) }
 	it { should respond_to(:ingredients) }
+	it { should respond_to(:directions) }
 
 	it { should be_valid }
 
@@ -94,6 +95,25 @@ describe Cocktail do
 	      	@cocktail.destroy
 	      	ingredients.each do |ingredient|
 	        	ingredient.find_by_id(ingredient.id).should be_nil
+	    	end
+	    end
+    end
+
+    describe "ingredients associations" do
+
+	    before { @cocktail.save }
+	    let!(:first_direction) { FactoryGirl.create(:direction, cocktail: @cocktail) }
+	    let!(:second_direction) { FactoryGirl.create(:direction, cocktail: @cocktail) }
+
+	    it "should have the right directions" do
+	      @cocktail.directions.should == [first_direction, second_direction]
+	    end
+
+	    it "should destroy associated directions" do
+	    	directions = @cocktail.directions
+	      	@cocktail.destroy
+	      	directions.each do |direction|
+	        	direction.find_by_id(direction.id).should be_nil
 	    	end
 	    end
     end 
