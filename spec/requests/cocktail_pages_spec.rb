@@ -14,6 +14,8 @@ describe "CocktailPages" do
 															decoration: "false" )
 			@second_ingredient = cocktail.ingredients.create(ingredient: "juice", measure: 2, unit: "shots",
 															decoration: "false" )
+			@first_direction = cocktail.directions.create(direction: "Muddle everything")
+			@second_direction = cocktail.directions.create(direction: "Shake then serve")
 		end
 
 	    before { visit cocktail_path(cocktail) }
@@ -52,6 +54,11 @@ describe "CocktailPages" do
 	    	# 	it { should have_content("decorate") }
 	    	# end
 	    end
+
+	    describe "directions" do
+	    	it { should have_content(cocktail.directions.first.direction) }
+	    	it { should have_content(cocktail.directions.second.direction) }
+	    end	    
 
 	end	
 

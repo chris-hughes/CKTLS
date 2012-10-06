@@ -48,5 +48,11 @@ namespace :db do
                                                                  decoration: decoration) }
       end
 
+      cocktails = Cocktail.all
+      2.times do
+        direction = "Shake and serve"
+        cocktails.each { |cocktail| cocktail.directions.create!(direction: direction) }
+      end
+
   	end
 end
