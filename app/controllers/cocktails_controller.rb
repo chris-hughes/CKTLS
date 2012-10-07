@@ -38,6 +38,7 @@ class CocktailsController < ApplicationController
 	end
 
 	def update
+		@cocktail = Cocktail.includes(:tools).where("cocktails.id=#{params[:id]}").first
 		@cocktail = Cocktail.find(params[:id])
 		if @cocktail.update_attributes(params[:cocktail])
 			flash[:success] = @cocktail.name.titleize+" updated!"

@@ -1,51 +1,37 @@
-<%= form_for(@cocktail) do |f| %>
+<%= nested_form_for(@cocktail) do |f| %>
 	 
 	<%= render 'shared/cocktail_error_messages' %>
 
-	<%= f.label :name %>
-	<%= f.text_field :name %>
+	<p>
 
-	<%= f.label :family %>
-	<%= f.select(:family, [["Fruity"],["Refreshing"]]) %>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
 
-	<%= f.label :makes %>
-	<%= f.number_field :makes, min: 1 %>
+		<%= f.label :family %>
+		<%= f.select(:family, [["Fruity"],["Refreshing"]]) %>
 
-	<%= f.label :glass %>
-	<%= f.select :glass, [["Wine glass"],["Martini glass"]] %>
+		<%= f.label :makes %>
+		<%= f.number_field :makes, min: 1 %>
 
-	<%= f.label :chilled %>
-	<%= f.select :chilled, [["No","FALSE"],["Yes","TRUE"]] %>
+		<%= f.label :glass %>
+		<%= f.select :glass, [["Wine glass"],["Martini glass"]] %>
 
-	<%= f.fields_for :tools do |builder| %>
-		<%= builder.label :tool %>
-		<%= builder.text_field :tool %>
+		<%= f.label :chilled %>
+		<%= f.select :chilled, [["No","FALSE"],["Yes","TRUE"]] %>
 
-		<%= builder.check_box :_destroy %>
-		<%= builder.label :_destroy, "Remove tool" %>
-	<% end %>
+	</p>
 
-	<%= f.fields_for :ingredients do |builder| %>
-		<%= builder.label :ingredient %>
-		<%= builder.text_field :ingredient %>
+	<%= f.fields_for :tools %>
 
-		<%= builder.label :measure %>
-		<%= builder.number_field :measure, min: 0 %>
+	<p><%= f.link_to_add "Add a tool", :tools %></p>
 
-		<%= builder.label :decoration %>
-		<%= builder.check_box :decoration %><br/>
+	<%= f.fields_for :ingredients %>
 
-		<%= builder.check_box :_destroy %>
-		<%= builder.label :_destroy, "Remove ingredient" %>
-	<% end %>
+	<p><%= f.link_to_add "Add an ingredient", :ingredients %></p>
 
-	<%= f.fields_for :directions do |builder| %>
-		<%= builder.label :direction %>
-		<%= builder.text_area :direction, rows: 3 %>
+	<%= f.fields_for :directions %>
 
-		<%= builder.check_box :_destroy %>
-		<%= builder.label :_destroy, "Remove direction" %>
-	<% end %>
+	<p><%= f.link_to_add "Add a direction", :directions %></p>
 
     <%= f.submit "Create my cocktail", class: "btn btn-large btn-primary" %>
 
