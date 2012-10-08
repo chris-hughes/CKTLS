@@ -20,9 +20,9 @@ class Cocktail < ActiveRecord::Base
 	has_many :ingredients, :inverse_of => :cocktail, dependent: :destroy
 	has_many :directions, :inverse_of => :cocktail, dependent: :destroy
 
-	accepts_nested_attributes_for :tools, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
-	accepts_nested_attributes_for :ingredients, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
-	accepts_nested_attributes_for :directions, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
+	accepts_nested_attributes_for :tools, :reject_if => lambda { |a| a[:tool].blank? }, :allow_destroy => true
+	accepts_nested_attributes_for :ingredients, :reject_if => lambda { |a| a[:ingredient].blank? }, :allow_destroy => true
+	accepts_nested_attributes_for :directions, :reject_if => lambda { |a| a[:direction].blank? }, :allow_destroy => true
 
 	validates :name, presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
 	validates :family, presence: true, length: { maximum: 50 }
