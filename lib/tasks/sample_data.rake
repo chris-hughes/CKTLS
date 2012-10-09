@@ -19,7 +19,18 @@ namespace :db do
 
       99.times do |n|
           name = Faker::Name.name
-          family = "Fruity"
+
+          mod = n % 7
+          family = case mod
+              when 0 then "Fabulously Fruity"
+              when 1 then "Cool and Refreshing"
+              when 2 then "Sparkling Gems"
+              when 3 then "Tangy Tongue Teasers"
+              when 4 then "Winter Warmers"
+              when 5 then "Rich and Creamy"
+              else "Sensational Shots"
+          end
+
           makes = 2
           glass = "Martini glass"
           chilled ="No"

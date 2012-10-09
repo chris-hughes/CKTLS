@@ -8,7 +8,12 @@
 		<%= f.text_field :name %>
 
 		<%= f.label :family %>
-		<%= f.select(:family, [["Fruity"],["Refreshing"]]) %>
+		<%= f.select(:family, 
+			[["Fabulously Fruity"],["Cool and Refreshing"],
+			["Sparkling Gems"],["Tangy Tongue Teasers"],
+			["Winter Warmers"],["Rich and Creamy"],
+			["Sensational Shots"]
+			]) %>
 
 		<%= f.label :makes %>
 		<%= f.number_field :makes, min: 1 %>
