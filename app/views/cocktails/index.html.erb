@@ -1,39 +1,6 @@
 <% provide(:title, 'Cocktails') %>
 <div class="center hero-unit">
 	<h1>Cocktails</h1>
-	<p>We're gunna fill this up with so many cocktails</p>
-</div>
-
-<div class="center hero-unit">
-	<h2>What goes into a cocktail?</h2>
-
-	<ul class="nav nav-tabs" id="myTab">
-		<li><a href="#spirits" data-toggle="tab">Spirits</a></li>
-		<li><a href="#glasses" data-toggle="tab">Glasses</a></li>
-		<li><a href="#equipment" data-toggle="tab">Equipment</a></li>
-		<li><a href="#techniques" data-toggle="tab">Techniques</a></li>
-		<li><a href="#decorations" data-toggle="tab">Decorations</a></li>
-	</ul>
-
-	<div class="tab-content">
-		<div class="tab-pane" id="spirits">
-			spirits
-		</div>
-		<div class="tab-pane active" id="glasses">glasses</div>
-		<div class="tab-pane" id="equipment">equipment</div>
-		<div class="tab-pane" id="techniques">techniques</div>
-		<div class="tab-pane" id="decorations">decorations</div>
-	</div>
-
-	<script>
-		$(function () {
-			$('#myTab a:first').tab('show');
-		})
-	</script>
-	 
-</div>
-
-<div class="center hero-unit">
 	<p>
 		<ul class="nav nav-pills">
 			<li class="<%= 'active' if params[:family] == "fruity" %>" >

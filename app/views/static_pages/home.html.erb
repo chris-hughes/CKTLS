@@ -1,6 +1,7 @@
 <% provide(:title, 'Home') %>
 <div class="center hero-unit">
 	<h1>CKTLS</h1>
+
 	<% if !signed_in? %>
 		<p>Boring party? Friends coming over? Let <em>CKTLS</em> find the right cocktail for any occasion</p>
 		<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
@@ -8,4 +9,114 @@
 		<p>Start enjoying cocktail now!</p>
 		<%= link_to "List of cocktails!", cocktails_path, class: "btn btn-large btn-primary" %>
 	<% end %>
+
+	<ul class="nav nav-tabs" id="myTab">
+		<li><a href="#spirits" data-toggle="tab">Spirits</a></li>
+		<li><a href="#glasses" data-toggle="tab">Glasses</a></li>
+		<li><a href="#equipment" data-toggle="tab">Equipment</a></li>
+		<li><a href="#techniques" data-toggle="tab">Techniques</a></li>
+		<li><a href="#decorations" data-toggle="tab">Decorations</a></li>
+	</ul>
+
+	<div class="tab-content">
+		<div class="tab-pane" id="spirits">
+			<div class="row">
+				<div class="span3">
+					<p><b>Brandy</b></p>					
+					Much brandy is distilled from grapes, but there are some varieties that use other fruits as their base.
+					Serve brandy with fruit and fruit juices, but don't use the finest brandies for mixed drinks.
+				</div>
+				<div class="span3">
+					<p><b>Gin</b></p>
+					A clear grain spirit infused with juniper berries, gin was first produced in Holland over 400 years ago. Serve it with citrus fruits, fresh berries and tonic water.
+				</div>
+				<div class="span3">
+					<p><b>Rum</b></p>
+					This Carribbean staple, which dates back to the 17th century, is made from sugar cane left over after sugar production. Serve rum with any exotic fruits, cream or cola.
+				</div>
+			</div>
+			<div class="row">
+				<div class="span3">
+					<p><b>Tequila</b></p>
+					Mexico's best-known spirit is made from the blue agave plant, and its origins can be traced back to the Aztecs. It was traditionally served by itself as a Tequila Slammer, but also works well with citrus and sour fruits as well as ginger and tomato.
+				</div>
+				<div class="span3">
+					<p><b>Vodka</b></p>
+					Vodka is distilled from grain and is relatively free from natural flavour. There is fierce debate as to its origins, with both the Poles and the Russians claiming to have invented the drink. With its neutral character, it is infinitely mixable with a huge range of flavours. Serve it with cranberry, tomato or citrus juices, or for a classic drink simply add tonic water.
+				</div>
+				<div class="span3">
+					<p><b>Whisky</b></p>
+					The origins of whisky are hotly debated, with both Scotland and Ireland staking a claim to having developed it. Modern whiskies have a much smoother taste and texture, and there are two main types: blended and unblended. Serve it with water, soda water, cola or ginger ale.
+				</div>
+			</div>
+		</div>
+		<div class="tab-pane active" id="glasses">
+			<div class="row">
+				<div class="span3">
+					<p><b>Champagne flute</b></p>					
+					Used for Champagne and Champagne cocktails, the narrow mouth of the flute helps the drink to stay fizzy.
+				</div>
+				<div class="span3">
+					<p><b>Champagne saucer</b></p>
+					These old-fashioned glasses are not very practical for serving Champagne because the drink quickly loses its fizz.
+				</div>
+				<div class="span3">
+					<p><b>Wine glass</b></p>
+					Sangria is often served in a wine glass, but they are not usually used for cocktails
+				</div>
+			</div>
+			<div class="row">
+				<div class="span3">
+					<p><b>Martini glass</b></p>
+					A martini glass, also known as a cocktail glass, is designed so that your hand can't warm the glass, making sure that the cocktail is served completely chilled.
+				</div>
+				<div class="span3">
+					<p><b>Margarita glass</b></p>
+					When this type of glass is used for a Margarita, the rim is dipped in salt. These glasses are used for daiquiris and other fruit-based cocktails.
+				</div>
+				<div class="span3">
+					<p><b>Highball glass</b></p>
+					A highball glass is suitable for any long cocktail, from the Cuba Libre to Long Island Iced Tea.
+				</div>
+			</div>
+			<div class="row">
+				<div class="span3">
+					<p><b>Old-fashioned glass</b></p>
+					Also known as a rocks glass, the old-fashioned glass is great for any drink that's served on the rocks or straight up. It's also good for muddled drinks.
+				</div>
+				<div class="span3">
+					<p><b>Shot glass</b></p>
+					Shot glasses are often found in two sizes - for a single or double measure. They are ideal for a single mouthful, which can range from a Tequila Shot to the more decadent layered B-52.
+				</div>
+				<div class="span3">
+					<p><b>Balloon glass</b></p>
+					These glasses are usually used for fine spirits, whose aroma is as importantas the taste. The glass can be warmed to encourage the release of the aroma.
+				</div>
+			</div>
+			<div class="row">
+				<div class="span3">
+					<p><b>Hurricane glass</b></p>
+					This type of glass is mostly found in beach bars, where it is used to serve creamy, rum-based drinks.
+				</div>
+				<div class="span3">
+					<p><b>Boston glass</b></p>
+					Often used by bartenders for mixing cocktails, the Boston glass is also good for fruity drinks.
+				</div>
+				<div class="span3">
+					<p><b>Toddy glass</b></p>
+					A toddy glass is generally used for a hot drink, such as Irish Coffee.
+				</div>
+			</div>
+		</div>
+		<div class="tab-pane" id="equipment">equipment</div>
+		<div class="tab-pane" id="techniques">techniques</div>
+		<div class="tab-pane" id="decorations">decorations</div>
+	</div>
+
+	<script>
+		$(function () {
+			$('#myTab a:first').tab('show');
+		})
+	</script>
+
 </div>
