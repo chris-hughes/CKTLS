@@ -9,11 +9,28 @@ class CocktailsController < ApplicationController
 		@directions = @cocktail.directions.all
 	end
 
-	def index
-		@cocktails = Cocktail.paginate(page: params[:page])
+	def index		
 		if signed_in?
 			@user = User.find_by_email(current_user.email)
 		end
+
+		@cocktails = case params[:family]
+        	when "fruity" 		then Cocktail.where("family = ?", "Fabulously Fruity")
+        									 .paginate(page: params[:page], per_page: 5)
+        	when "cool" 		then Cocktail.where("family = ?", "Cool and Refreshing")
+        									 .paginate(page: params[:page], per_page: 5)
+        	when "sparkling" 	then Cocktail.where("family = ?", "Sparkling Gems")
+        									 .paginate(page: params[:page], per_page: 5)
+        	when "tangy" 		then Cocktail.where("family = ?", "Tangy Tongue Teasers")
+        									 .paginate(page: params[:page], per_page: 5)
+        	when "winter" 		then Cocktail.where("family = ?", "Winter Warmers")
+        									 .paginate(page: params[:page], per_page: 5)
+        	when "rich" 		then Cocktail.where("family = ?", "Rich and Creamy")
+        									 .paginate(page: params[:page], per_page: 5)
+        	when "shots" 		then Cocktail.where("family = ?", "Sensational Shots")
+        									 .paginate(page: params[:page], per_page: 5)
+        	else 					 Cocktail.paginate(page: params[:page], per_page: 5)
+        end
 	end
 
 	def new

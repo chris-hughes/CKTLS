@@ -3,12 +3,31 @@
 	<h1>Cocktails</h1>
 	<p>We're gunna fill this up with so many cocktails</p>
 	<p>
-    	<a class="btn btn-primary btn-large">
-      	Can't wait!
-    	</a>
-    	<a class="btn btn-primary btn-large">
-      		Can't wait!
-    	</a>
+		<ul class="nav nav-pills">
+			<li class="active" id="fruity">
+				<%= link_to "Fabulously Fruity", cocktails_path(family: "fruity") %>
+		    </li>
+		  	<li id="cool">
+		  		<%= link_to "Cool and Refreshing", cocktails_path(family: "cool") %>
+		  	</li>
+		  	<li id="sparkling">
+		  		<%= link_to "Sparkling Gems", cocktails_path(family: "sparkling") %>
+		  	</li>
+		  	<li id="tangy">
+		  		<%= link_to "Tangy Tongue Teasers", cocktails_path(family: "tangy") %>
+		  	</li>
+		</ul>
+		<ul class="nav nav-pills">
+		  	<li id="winter">
+		  		<%= link_to "Winter Warmers", cocktails_path(family: "winter") %>
+		  	</li>
+		  	<li id="rich">
+		  		<%= link_to "Rich and Creamy", cocktails_path(family: "rich") %>
+		  	</li>
+		  	<li id="shots">
+		  		<%= link_to "Sensational Shots", cocktails_path(family: "shots") %>
+		  	</li>
+		</ul>
   	</p>
 </div>
 <div class="center hero-unit">
