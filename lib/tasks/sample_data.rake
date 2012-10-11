@@ -49,7 +49,15 @@ namespace :db do
 
       cocktails = Cocktail.all
       2.times do
-        ingredient = "Vodka"
+        mod2 = rand(6)
+        ingredient = case mod2
+              when 0 then "Brandy"
+              when 1 then "Gin"
+              when 2 then "Rum"
+              when 3 then "Tequila"
+              when 4 then "Vodka"
+              when 5 then "Whisky"
+        end
         measure = 2
         unit = "Shots"
         decoration = false
