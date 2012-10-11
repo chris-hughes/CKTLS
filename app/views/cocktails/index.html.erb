@@ -3,6 +3,9 @@
 	<h1>Cocktails</h1>
 	<p>
 		<ul class="nav nav-pills">
+		  	<li class="<%= 'active' if !params[:family]  %>" >
+		  		<%= link_to "All cocktails", cocktails_path %>
+		  	</li>
 			<li class="<%= 'active' if params[:family] == "fruity" %>" >
 				<%= link_to "Fabulously Fruity", cocktails_path(family: "fruity") %>
 		    </li>
@@ -12,11 +15,11 @@
 		  	<li class="<%= 'active' if params[:family] == "sparkling" %>" >
 		  		<%= link_to "Sparkling Gems", cocktails_path(family: "sparkling") %>
 		  	</li>
+		</ul>
+		<ul class="nav nav-pills">
 		  	<li class="<%= 'active' if params[:family] == "tangy" %>" >
 		  		<%= link_to "Tangy Tongue Teasers", cocktails_path(family: "tangy") %>
 		  	</li>
-		</ul>
-		<ul class="nav nav-pills">
 		  	<li class="<%= 'active' if params[:family] == "winter" %>" >
 		  		<%= link_to "Winter Warmers", cocktails_path(family: "winter") %>
 		  	</li>
