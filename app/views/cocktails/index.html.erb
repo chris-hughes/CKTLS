@@ -1,36 +1,67 @@
 <% provide(:title, 'Cocktails') %>
 <div class="center hero-unit">
 	<h1>Cocktails</h1>
-	<p>
-		<ul class="nav nav-pills">
-		  	<li class="<%= 'active' if !params[:family]  %>" >
-		  		<%= link_to "All cocktails", cocktails_path %>
-		  	</li>
-			<li class="<%= 'active' if params[:family] == "fruity" %>" >
-				<%= link_to "Fabulously Fruity", cocktails_path(family: "fruity") %>
-		    </li>
-		  	<li class="<%= 'active' if params[:family] == "cool" %>" >
-		  		<%= link_to "Cool and Refreshing", cocktails_path(family: "cool") %>
-		  	</li>
-		  	<li class="<%= 'active' if params[:family] == "sparkling" %>" >
-		  		<%= link_to "Sparkling Gems", cocktails_path(family: "sparkling") %>
-		  	</li>
-		</ul>
-		<ul class="nav nav-pills">
-		  	<li class="<%= 'active' if params[:family] == "tangy" %>" >
-		  		<%= link_to "Tangy Tongue Teasers", cocktails_path(family: "tangy") %>
-		  	</li>
-		  	<li class="<%= 'active' if params[:family] == "winter" %>" >
-		  		<%= link_to "Winter Warmers", cocktails_path(family: "winter") %>
-		  	</li>
-		  	<li class="<%= 'active' if params[:family] == "rich" %>" >
-		  		<%= link_to "Rich and Creamy", cocktails_path(family: "rich") %>
-		  	</li>
-		  	<li class="<%= 'active' if params[:family] == "shots" %>" >
-		  		<%= link_to "Sensational Shots", cocktails_path(family: "shots") %>
-		  	</li>
-		</ul>
-  	</p>
+
+	<div class="row-fluid">
+		<div class="span6">
+			<p>
+				<ul class="nav nav-pills">
+				  	<li class="<%= 'active' if !params[:family] && !params[:spirit]  %>" >
+				  		<%= link_to "All cocktails", cocktails_path %>
+				  	</li>
+					<li class="<%= 'active' if params[:family] == "fruity" %>" >
+						<%= link_to "Fabulously Fruity", cocktails_path(family: "fruity") %>
+				    </li>
+				  	<li class="<%= 'active' if params[:family] == "cool" %>" >
+				  		<%= link_to "Cool and Refreshing", cocktails_path(family: "cool") %>
+				  	</li>
+				  	<li class="<%= 'active' if params[:family] == "sparkling" %>" >
+				  		<%= link_to "Sparkling Gems", cocktails_path(family: "sparkling") %>
+				  	</li>
+				</ul>
+				<ul class="nav nav-pills">
+				  	<li class="<%= 'active' if params[:family] == "tangy" %>" >
+				  		<%= link_to "Tangy Tongue Teasers", cocktails_path(family: "tangy") %>
+				  	</li>
+				  	<li class="<%= 'active' if params[:family] == "winter" %>" >
+				  		<%= link_to "Winter Warmers", cocktails_path(family: "winter") %>
+				  	</li>
+				  	<li class="<%= 'active' if params[:family] == "rich" %>" >
+				  		<%= link_to "Rich and Creamy", cocktails_path(family: "rich") %>
+				  	</li>
+				  	<li class="<%= 'active' if params[:family] == "shots" %>" >
+				  		<%= link_to "Sensational Shots", cocktails_path(family: "shots") %>
+				  	</li>
+				</ul>
+		  	</p>
+		</div>
+		<div class="span6">
+		  	<p>
+				<ul class="nav nav-pills">
+					<li class="<%= 'active' if params[:spirit] == "brandy" %>" >
+						<%= link_to "Brandy", cocktails_path(spirit: "brandy") %>
+				    </li>
+				  	<li class="<%= 'active' if params[:spirit] == "gin" %>" >
+				  		<%= link_to "Gin", cocktails_path(spirit: "gin") %>
+				  	</li>
+				  	<li class="<%= 'active' if params[:spirit] == "rum" %>" >
+				  		<%= link_to "Rum", cocktails_path(spirit: "rum") %>
+				  	</li>
+				</ul>
+				<ul class="nav nav-pills">
+				  	<li class="<%= 'active' if params[:spirit] == "tequila" %>" >
+				  		<%= link_to "Tequila", cocktails_path(spirit: "tequila") %>
+				  	</li>
+				  	<li class="<%= 'active' if params[:spirit] == "vodka" %>" >
+				  		<%= link_to "Vodka", cocktails_path(spirit: "vodka") %>
+				  	</li>
+				  	<li class="<%= 'active' if params[:spirit] == "whisky" %>" >
+				  		<%= link_to "Whisky", cocktails_path(spirit: "whisky") %>
+				  	</li>
+				</ul>
+		  	</p>
+		</div>
+	</div>
 
 	<%= will_paginate %>
 	<ul class="cocktails">
