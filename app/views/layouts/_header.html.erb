@@ -4,7 +4,7 @@
 			<ul class="nav pull-left">
 				<%= link_to "CKTLS", root_path, id: "logo" %>
 				<% if signed_in? %>
-					<li class='divider'></li>
+					<li class='divider-vertical'></li>
 					<li><%= link_to current_user.name, current_user %></li>
 				<% end %>
 			</ul>
