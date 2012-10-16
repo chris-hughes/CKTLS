@@ -1,5 +1,4 @@
 @import "bootstrap";
-@import "bootstrap-responsive";
 
 /* mixins, variables, etc. */
 
@@ -19,6 +18,7 @@ html {
 
 body {
   padding-top: 60px;
+  background-color:#35D4A0;
 }
 
 section {
@@ -90,7 +90,7 @@ footer {
   border-top: 1px solid $grayMediumLight;
   color: $grayLight;
   a {
-    color: $gray;
+    color: #fff;
     &:hover { 
       color: $grayDarker;
     }
@@ -200,3 +200,5 @@ input, textarea, select, .uneditable-input {
     }
   }
 }
+
+@import "bootstrap-responsive";
