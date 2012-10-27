@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
 
 	has_secure_password
 
+	has_many :votes, dependent: :destroy
+	has_many :cocktails, through: :votes
+
 
 
 	validates :name, presence: true, length: { maximum: 50 }
@@ -27,6 +30,18 @@ class User < ActiveRecord::Base
 	validates :password_confirmation, presence: true
 
 	before_save :create_remember_token
+
+	def voted?(cocktail)
+    	self.votes.find_by_cocktail_id(cocktail.id)
+    end
+
+    def vote!(cocktail)
+    	self.votes.create!(cocktail_id: cocktail.id)
+    end
+
+    def unvote!(cocktail)
+    	self.votes.find_by_cocktail_id(cocktail.id).destroy
+    end
 
 	private
 

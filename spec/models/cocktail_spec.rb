@@ -28,6 +28,7 @@ describe Cocktail do
 	it { should respond_to(:tools) }
 	it { should respond_to(:ingredients) }
 	it { should respond_to(:directions) }
+	it { should respond_to(:votes) }
 
 	it { should be_valid }
 
@@ -99,7 +100,7 @@ describe Cocktail do
 	    end
     end
 
-    describe "ingredients associations" do
+    describe "direction associations" do
 
 	    before { @cocktail.save }
 	    let!(:first_direction) { FactoryGirl.create(:direction, cocktail: @cocktail) }

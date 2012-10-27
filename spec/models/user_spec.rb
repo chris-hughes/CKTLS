@@ -28,9 +28,33 @@ describe User do
 	it { should respond_to(:authenticate) }
 	it { should respond_to(:remember_token) }
 	it { should respond_to(:admin) }
+	it { should respond_to(:votes) }
+	it { should respond_to(:cocktails) }
+	it { should respond_to(:voted?) }
+	it { should respond_to(:vote!) }
+	it { should respond_to(:unvote!) }
 
 	it { should be_valid }
 	it { should_not be_admin }
+
+
+	describe "voting" do
+	    let(:cocktail) { FactoryGirl.create(:cocktail) }    
+	    before do
+    		@user.save
+     		@user.vote!(cocktail)
+    	end
+
+    	it { should be_voted(cocktail) }
+    	its(:cocktails) { should include(cocktail) }
+
+    	describe "unvoting" do
+      		before { @user.unvote!(cocktail) }
+
+      		it { should_not be_voted(cocktail) }
+      		its(:cocktails) { should_not include(cocktail) }
+    	end
+  	end
 
 	describe "when name is not present" do
 		before { @user.name=" " }
