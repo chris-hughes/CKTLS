@@ -1,6 +1,9 @@
 class StaticPagesController < ApplicationController
 	
 	def home
+		if signed_in?
+			@user = User.find_by_email(current_user.email)
+		end
 	end
 
 	def cocktails

@@ -6,8 +6,12 @@ Cktls::Application.routes.draw do
   match "/about", to: 'static_pages#about'
   match "/contact", to: 'static_pages#contact'
 
-  # users
-  resources :users
+  # users - including voted on cocktails
+  resources :users do
+    member do
+      get :cocktails
+    end
+  end
   match "/signup", to: 'users#new'
 
   # signin
@@ -17,6 +21,9 @@ Cktls::Application.routes.draw do
 
   # cocktails
   resources :cocktails
+
+  # votes
+  resources :votes, only: [:create, :destroy]
 
 
 

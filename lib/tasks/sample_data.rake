@@ -73,5 +73,16 @@ namespace :db do
         cocktails.each { |cocktail| cocktail.directions.create!(direction: direction) }
       end
 
+
+      make_votes
+
   	end
 end
+
+def make_votes
+    user = User.all
+    cocktails = Cocktail.all[1..5]
+    user.each { |user| cocktails.each { |cocktail| user.vote!(cocktail) } }
+end
+
+

@@ -9,7 +9,8 @@
 			<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
 		<% else %>
 			<p>Start enjoying cocktails now!</p>
-			<%= link_to "List of cocktails!", cocktails_path, class: "btn btn-large btn-primary" %>
+			<%= link_to "List all cocktails!", cocktails_path, class: "btn btn-large btn-primary" %>
+			<%= link_to "Jump to favourites", cocktails_user_path(@user), class: "btn btn-large btn-primary" %>
 		<% end %>
 	</div>
 	<br/>

@@ -8,6 +8,25 @@ describe "StaticPages" do
 		before { visit root_path }
 		it { should have_selector('h1', :text => 'CKTLS') }
 		it { should have_selector('title', :text => 'CKTLS | Home') }
+
+		describe "For signed in users" do
+			let(:user) { FactoryGirl.create(:user) }
+			before do
+				sign_in user
+				visit root_path
+			end
+
+			describe "should show favourites button" do
+				let(:cocktail)	{ FactoryGirl.create(:cocktail) }
+				before do
+					user.vote!(cocktail)
+					visit root_path
+				end
+
+				it { should have_link('Jump to favourites', href: cocktails_user_path(user)) }
+			end
+
+		end
 	end
 
 	describe "About Page " do
