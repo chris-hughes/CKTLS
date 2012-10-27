@@ -5,7 +5,8 @@ describe "CocktailPages" do
 	subject { page }
 
 	describe "cocktail show page" do
-
+		
+		let(:user) { FactoryGirl.create(:user) }
 		let(:cocktail) { FactoryGirl.create(:cocktail) }
 		before do
 			@first_tool = cocktail.tools.create(tool: "straws")
@@ -58,7 +59,51 @@ describe "CocktailPages" do
 	    describe "directions" do
 	    	it { should have_content(cocktail.directions.first.direction) }
 	    	it { should have_content(cocktail.directions.second.direction) }
-	    end	    
+	    end
+
+	    describe "vote buttons" do
+
+	    	describe "vote" do
+		    	before do
+		    		sign_in user
+		    		visit cocktail_path(cocktail)
+		    	end
+
+		    	it { should have_button('Vote') }
+
+		    	it "should increment vote count by 1" do
+		    		expect do
+		    			click_button "Vote"
+		    		end.to change(user.votes, :count).by(1)
+		    	end
+
+		    	describe "toggle the button" do
+		    		before { click_button "Vote" }
+		    		it { should have_button "Un-Vote" }
+		    	end
+		    end
+
+	    	describe "unvote" do
+	    		before do
+	    			sign_in user
+	    			user.vote!(cocktail)
+	    			visit cocktail_path(cocktail)
+	    		end
+
+	    		it { should have_button('Un-Vote') }
+
+	    		it "should decrement vote count by 1" do
+		    		expect do
+		    			click_button "Un-Vote"
+		    		end.to change(user.votes, :count).by(-1)
+		    	end
+
+		    	describe "toggle the button" do
+		    		before { click_button "Un-Vote" }
+		    		it { should have_button "Vote" }
+		    	end
+	    	end
+	    end
 
 	end	
 

@@ -51,7 +51,7 @@ class CocktailsController < ApplicationController
 	        end
 
 	    else
-	    	@cocktails = Cocktail.paginate(page: params[:page], per_page: 5)
+	    	@cocktails = Cocktail.paginate(page: params[:page])
 	    end
 
 	end

@@ -100,6 +100,18 @@ describe "Authentication" do
 
         end
 
+        describe "in the Votes controller" do
+          describe "submitting to the create action" do
+            before { post votes_path }
+            specify { response.should redirect_to(signin_path) }
+          end
+
+          describe "submitting to the destroy action" do
+            before { delete vote_path(1) }
+            specify { response.should redirect_to(signin_path) }          
+          end
+        end
+
   			describe "when attempting to visit a protected page" do
         		before do
           			visit edit_user_path(user)

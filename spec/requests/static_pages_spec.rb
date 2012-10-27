@@ -23,7 +23,7 @@ describe "StaticPages" do
 					visit root_path
 				end
 
-				it { should have_link('Jump to favourites', href: cocktails_user_path(user)) }
+				it { should have_link('Jump to favourites', href: user_path(user)) }
 			end
 
 		end

@@ -27,11 +27,13 @@
 			</p>
 			<%= render 'cocktails/ingredients' %>
 			<%= render 'cocktails/directions' %>
-			<% if current_user.voted?(@cocktail) %>
-    			<%= render 'unvote' %>
-  			<% else %>
-   				<%= render 'vote' %>
-   			<% end %>
+			<%  if signed_in? %>
+				<% if current_user.voted?(@cocktail) %>
+	    			<%= render 'unvote' %>
+	  			<% else %>
+	   				<%= render 'vote' %>
+	   			<% end %>
+	   		<% end %>
 		</section>
 	</aside>
 </div>
