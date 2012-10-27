@@ -1,11 +1,22 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-	<aside class="span4">
-		<section>
-			<h1>
-				<%= gravatar_for @user %>
-				<%= @user.name %>
-			</h1>
-		</section>
-	</aside>
+<div class="row-fluid">
+	<div class="span2">
+		<aside>
+			<section>
+				<h1>
+					<%= gravatar_for @user %>
+					<%= @user.name %>
+				</h1>
+			</section>
+		</aside>
+	</div>
+	<div class="span8">
+		<h1>My Cocktails</h1>
+		<h2>My Favourites</h2>
+		<ul class="cocktails">
+			<% @cocktails.each do |cocktail| %>
+				<%= render @cocktails %>
+			<% end %>
+		</ul>
+	</div>
 </div>

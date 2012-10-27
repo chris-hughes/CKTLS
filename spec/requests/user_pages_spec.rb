@@ -16,6 +16,16 @@ describe "UserPages" do
 
 		it { should have_selector('h1',    text: user.name) }
 		it { should have_selector('title', text: user.name) }
+
+		describe "Favourite Cocktails" do
+			let(:cocktail) { FactoryGirl.create(:cocktail) }
+			before do
+				user.vote!(cocktail)
+				visit user_path(user)
+			end
+
+			it { should have_content(cocktail.name) }
+		end
 	end
 
 	describe "signup" do
