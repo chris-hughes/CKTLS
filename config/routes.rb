@@ -5,6 +5,7 @@ Cktls::Application.routes.draw do
   root to: 'static_pages#home'
   match "/about", to: 'static_pages#about'
   match "/contact", to: 'static_pages#contact'
+  match "/learn", to: 'static_pages#learn'
 
   # users - including voted on cocktails
   resources :users

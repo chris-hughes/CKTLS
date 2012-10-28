@@ -9,6 +9,9 @@ class StaticPagesController < ApplicationController
 	def cocktails
 	end
 
+	def learn
+	end
+
 	def about
 	end
 	
