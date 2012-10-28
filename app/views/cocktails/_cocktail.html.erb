@@ -18,7 +18,36 @@
 								<% end %>
 							</b>
 						</li>
-						
+						<% if cocktail.tools.any? %>
+							<li>
+								Equipment
+								<% cocktail.tools.each do |tool| %>
+									<b><%= tool.tool %>,</b>
+								<% end %>
+							</li>
+						<% end %>
+					</ul>
+				</p>
+				<p>
+					<ul>
+						<% cocktail.ingredients.each do |ingredient| %>
+							<li>
+								<%= ingredient.measure %> <%= ingredient.unit %> <b><%= ingredient.ingredient %></b>
+								<% if ingredient.decoration? %>
+									,decoration
+								<% end %>
+							</li>
+						<% end %>
+					</ul>
+				</p>
+				<p>
+					<ul>
+						<% cocktail.directions.each do |direction| %>
+							<% test = direction.direction.split %>
+							<li>
+								<b><%= test.shift %></b> <%=test.join(' ') %>
+							</li>
+						<% end %>
 					</ul>
 				</p>
 			</section>

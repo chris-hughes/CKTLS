@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		@cocktails = @user.cocktails.paginate(page: params[:page])
+		@cocktails = @user.cocktails.all
 	end
 
 	def index

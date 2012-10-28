@@ -3,7 +3,7 @@ $(document).ready(function() {
 	if ($('#favourites').length) {
 		console.log('test');
 
-		$('.cocktails > li').prepend('<span class="detail_toggle">details</span>');
+		$('.cocktails > li').prepend('<span class="btn btn-info btn-small detail_toggle">details</span>');
 		var toggle = -1;
 
 		$('.detail_toggle').click(function() {
