@@ -1,0 +1,23 @@
+$(document).ready(function() {
+
+	if ($('#favourites').length) {
+		console.log('test');
+
+		$('.cocktails > li').prepend('<span class="detail_test">details</span>');
+		var toggle = -1;
+
+		$('.detail_test').click(function() {
+  			$('.cocktails li .show_test').slideToggle('slow', function(){
+  				if (toggle > 0) { 
+  					$('.cocktails li .show_test').attr('style', 'display: none;');
+  					toggle *= -1;
+  				} else {
+  					$('.cocktails li .show_test').attr('style', 'display: show;')
+  					toggle *= -1;
+  				}
+  			});
+		});
+
+	}
+
+ });
