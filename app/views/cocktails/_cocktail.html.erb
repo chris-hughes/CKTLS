@@ -1,5 +1,31 @@
 <li>
-	<%= link_to cocktail.name, cocktail %>
+	<%= link_to cocktail.name, cocktail %> | <span id="detail_test">details</span>
+
+	<div class="row-fluid" id="test" style="display: none;">
+		<aside class="span4">
+			<section>
+				<p>
+					<ul>
+						<li>
+							Makes <b><%= cocktail.makes %></b>
+						</li>
+						<li>
+							Glasses 
+							<b>
+								<%= cocktail.makes %> <%= cocktail.glass %>
+								<% if cocktail.chilled? %>
+									,chilled
+								<% end %>
+							</b>
+						</li>
+						
+					</ul>
+				</p>
+			</section>
+		</aside>
+	</div>
+
+
 	<% if signed_in? %>
 		<% if current_user.admin? %>
 			| <%= link_to "delete", cocktail, method: :delete, data: { confirm: "You sure?" } %>
