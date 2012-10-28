@@ -3,16 +3,16 @@ $(document).ready(function() {
 	if ($('#favourites').length) {
 		console.log('test');
 
-		$('.cocktails > li').prepend('<span class="detail_test">details</span>');
+		$('.cocktails > li').prepend('<span class="detail_toggle">details</span>');
 		var toggle = -1;
 
-		$('.detail_test').click(function() {
-  			$('.cocktails li .show_test').slideToggle('slow', function(){
+		$('.detail_toggle').click(function() {
+  			$(this).siblings('div').slideToggle('slow', function(){
   				if (toggle > 0) { 
-  					$('.cocktails li .show_test').attr('style', 'display: none;');
+  					$(this).siblings('div').attr('style', 'display: none;');
   					toggle *= -1;
   				} else {
-  					$('.cocktails li .show_test').attr('style', 'display: show;')
+  					$(this).siblings('div').attr('style', 'display: show;')
   					toggle *= -1;
   				}
   			});
