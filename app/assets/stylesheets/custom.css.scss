@@ -30,6 +30,10 @@ textarea {
   resize: vertical;
 }
 
+a {
+  color: #006E4A;
+}
+
 .center {
   text-align: center;
   h1 {
@@ -38,6 +42,7 @@ textarea {
 }
 
 #logo {
+  font-size: 5em;
   font-family: 'Finger Paint', cursive;
 }
 
@@ -48,6 +53,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
+  font-family: 'Finger Paint', cursive;
   font-size: 3em;
   letter-spacing: -2px;
   margin-bottom: 30px;
@@ -60,7 +66,6 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: $grayLight;
 }
 
 p {
@@ -93,12 +98,13 @@ p {
 footer {
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid $grayMediumLight;
-  color: $grayLight;
+  border-top: 1px solid black;
+  color: black;
   a {
-    color: #fff;
+    color: black;
+    font-weight: bold;
     &:hover { 
-      color: $grayDarker;
+      color: $grayLighter;
     }
   }  
   small { 
@@ -202,5 +208,42 @@ input, textarea, select, .uneditable-input {
     padding: 10px 0;
   }
 }
+
+/* nav-tabs */
+
+.custom-tabs {
+    border-bottom: 1px solid black;
+}
+
+.custom-tabs > li > a:hover {
+    color: white;
+    background-color: black;
+    border-color: black;
+}
+
+.custom-tabs > .active > a {
+    color: white;
+    background-color: black;
+    border-color: black;  
+}
+
+.custom-tabs > .active > a:hover {
+    color: white;
+    background-color: black;
+    border-color: black; 
+}
+
+/* paginate */
+
+.pagination a {
+    border: 1px solid black;
+    color: black;
+}
+
+.pagination a:hover, .pagination .active a {
+    color: white;
+    background-color: black;
+}
+
 
 @import "bootstrap-responsive";
