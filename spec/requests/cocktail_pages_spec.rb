@@ -186,6 +186,11 @@ describe "CocktailPages" do
 				fill_in "Makes",		with: 2
 				select "Martini glass", from: "Glass"
 				select "No",			from: "Chilled"
+				fill_in "Tool",			with: "Muddler"
+				fill_in "Ingredient",	with: "Whisky"
+				fill_in "Measure",		with: 2
+				fill_in "Unit",			with: "Shots"
+				fill_in "Direction",	with: "Mix and serve"
 			end
 
 			it 'should create a cocktail' do
