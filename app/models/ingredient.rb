@@ -16,7 +16,7 @@ class Ingredient < ActiveRecord::Base
 	attr_accessible :decoration, :ingredient, :measure, :unit
   	belongs_to :cocktail
 
-	validates :cocktail_id, presence: true
+	validates_presence_of :cocktail
 	# validates :decoration, presence: true
 	validates :ingredient, presence: true
 	validates :measure, presence: true
